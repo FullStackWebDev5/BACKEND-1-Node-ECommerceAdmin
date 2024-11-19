@@ -1,7 +1,9 @@
 const path = require('path')
 const { 
   getP,
-  createP
+  createP,
+  updateP,
+  deleteP
 } = require('../models/product')
 
 const displayDashboard = (req, res) => {
@@ -17,14 +19,29 @@ const fetchProducts = (req, res) => {
 }
 
 const createProduct = (req, res) => {
-  console.log(req.body)
   const newProduct = req.body
   createP(newProduct)
-  res.send('Product added successfully!')
+  res.redirect('/dashboard')
+}
+
+const updateProduct = (req, res) => {
+  const { id } = req.params
+  const { title, currentPrice, mrp, imageURL } = req.body
+  const updatedProduct = { title, currentPrice, mrp, imageURL }
+  updateP(Number(id), updatedProduct)
+  res.send('Product updated successfully')
+}
+
+const deleteProduct = (req, res) => {
+  const { id } = req.params
+  deleteP(Number(id))
+  res.send('Product deleted successfully')
 }
 
 module.exports = { 
   fetchProducts,
   createProduct,
-  displayDashboard
+  displayDashboard,
+  updateProduct,
+  deleteProduct
 }

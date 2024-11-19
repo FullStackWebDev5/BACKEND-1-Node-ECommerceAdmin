@@ -1,14 +1,5 @@
-let productId = 2
-
-let products = [
-  {
-    id: 1,
-    title: 'boAt Rockerz 430 w/ 40mm Drivers',
-    currentPrice: '1299',
-    mrp: '2499',
-    imageURL: 'https://m.media-amazon.com/images/I/71L70bAl2KL._SX679_.jpg'
-  }
-]
+let products = []
+let productId = products.length + 1
 
 const getP = () => {
   return products

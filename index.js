@@ -5,12 +5,15 @@ const ejs = require('ejs')
 const { 
   displayDashboard,
   fetchProducts,
-  createProduct
+  createProduct,
+  updateProduct,
+  deleteProduct
 } = require('./src/controllers/product')
 
 const app = express()
 
 app.use(bodyParser.urlencoded())
+app.use(bodyParser.json())
 app.use(express.static('public'))
 
 app.set('view engine', 'ejs')
@@ -28,7 +31,13 @@ app.get('/products', fetchProducts)
 // CREATE: POST /products
 app.post('/products', createProduct)
 
-app.listen(3000, () => {
+// UPDATE: PATCH /products/:id
+app.patch('/products/:id', updateProduct)
+
+// DELETE: DELETE /products/:id
+app.delete('/products/:id', deleteProduct)
+
+app.listen(4000, () => {
   console.log('Server is up :)')
 })
 
@@ -63,4 +72,7 @@ app.listen(3000, () => {
 
   # Resources
     - Req params: https://www.geeksforgeeks.org/express-js-req-params-property/
+
+  # Future
+    - PATCH vs PUT
 */
