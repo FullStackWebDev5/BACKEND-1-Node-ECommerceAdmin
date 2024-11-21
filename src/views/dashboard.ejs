@@ -54,6 +54,11 @@
     </div>
 
     <div class="form-container" id="add-form">
+      <% if(errorMessage) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= errorMessage %>
+        </div>
+      <% } %>
       <h1 class="mb-3">Add new product</h1>
       <form method="POST" action="/products">
         <div class="mb-3">

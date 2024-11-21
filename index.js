@@ -70,8 +70,14 @@ app.listen(4000, () => {
       - Update: PATCH /products/:id
       - Delete: DELETE /products/:id
 
+  # Validations
+    - Check user input
+    - Already learnt validation in FE
+    - Required in BE, in case FE missed any validation/ request is done from a testing tool/ attacks by hackers (XSS, SQL injection, etc.)
+
   # Resources
     - Req params: https://www.geeksforgeeks.org/express-js-req-params-property/
+    - XSS: https://www.veracode.com/security/xss
 
   # Future
     - PATCH vs PUT
