@@ -10,9 +10,13 @@ const {
   deleteProduct
 } = require('./src/controllers/product')
 
+// const {
+//   validateProductMiddleware
+// } = require('./src/middlewares/validateProduct')
+
 const {
-  validateProductMiddleware
-} = require('./src/middlewares/validateProduct')
+  validationRules
+} = require ('./src/middlewares/validateProduct')
 
 const app = express()
 
@@ -33,7 +37,8 @@ app.get('/dashboard', displayDashboard)
 app.get('/products', fetchProducts)
 
 // CREATE: POST /products
-app.post('/products', validateProductMiddleware, createProduct)
+// app.post('/products', validateProductMiddleware, createProduct)
+app.post('/products', validationRules, createProduct)
 
 // UPDATE: PATCH /products/:id
 app.patch('/products/:id', updateProduct)
@@ -78,11 +83,15 @@ app.listen(4000, () => {
     - Check user input
     - Already learnt validation in FE
     - Required in BE, in case FE missed any validation/ request is done from a testing tool/ attacks by hackers (XSS, SQL injection, etc.)
+    - We can also use external modules like express-validator
 
   # Resources
     - Req params: https://www.geeksforgeeks.org/express-js-req-params-property/
     - XSS: https://www.veracode.com/security/xss
-    - Express Validator: https://www.npmjs.com/package/express-validator
+    - Express Validator: 
+      - https://www.npmjs.com/package/express-validator
+      - https://express-validator.github.io/docs/
+      - https://github.com/validatorjs/validator.js
 
   # Future
     - PATCH vs PUT

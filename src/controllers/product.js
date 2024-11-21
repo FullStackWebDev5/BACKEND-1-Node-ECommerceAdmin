@@ -1,4 +1,5 @@
 const path = require('path')
+const { validationResult } = require('express-validator');
 const { 
   getP,
   createP,
@@ -20,6 +21,15 @@ const fetchProducts = (req, res) => {
 }
 
 const createProduct = (req, res) => {
+  const products = getP()
+  const errors = validationResult(req)
+  if(!errors.isEmpty()) {
+    return res.render('dashboard', {
+      products,
+      errorMessage: errors.array()[0].msg
+    })
+  }
+
   const { title, currentPrice, mrp, imageURL } = req.body
   const newProduct = { title, currentPrice, mrp, imageURL }
   createP(newProduct)
