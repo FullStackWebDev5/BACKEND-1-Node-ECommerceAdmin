@@ -10,6 +10,10 @@ const {
   deleteProduct
 } = require('./src/controllers/product')
 
+const {
+  validateProductMiddleware
+} = require('./src/middlewares/validateProduct')
+
 const app = express()
 
 app.use(bodyParser.urlencoded())
@@ -29,7 +33,7 @@ app.get('/dashboard', displayDashboard)
 app.get('/products', fetchProducts)
 
 // CREATE: POST /products
-app.post('/products', createProduct)
+app.post('/products', validateProductMiddleware, createProduct)
 
 // UPDATE: PATCH /products/:id
 app.patch('/products/:id', updateProduct)
@@ -78,6 +82,7 @@ app.listen(4000, () => {
   # Resources
     - Req params: https://www.geeksforgeeks.org/express-js-req-params-property/
     - XSS: https://www.veracode.com/security/xss
+    - Express Validator: https://www.npmjs.com/package/express-validator
 
   # Future
     - PATCH vs PUT
