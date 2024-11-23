@@ -63,6 +63,12 @@ app.listen(4000, () => {
       res.send(username)
     })
 
+  # REST API:
+    - Type of API
+    - REpresenational State Transfer
+    - Uses HTTP Method to perform CRUD Operations
+    - Stateless
+
   # HTTP Methods
     - GET    : READ
     - POST   : CREATE
@@ -92,6 +98,7 @@ app.listen(4000, () => {
       - https://www.npmjs.com/package/express-validator
       - https://express-validator.github.io/docs/
       - https://github.com/validatorjs/validator.js
+    - REST: https://images.tutorialedge.net/uploads/rest-api.png
 
   # Future
     - PATCH vs PUT
